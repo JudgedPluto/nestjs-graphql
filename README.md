@@ -28,13 +28,20 @@ Once the server is running, access the GraphQL Playground interface:
 
 The GraphQL Playground provides the following operations:
 
-## Queries
+- Queries
+  - `getAccount(id)`: Retrieves details of a specific account
+- Mutations
+  - `createAccount(holderName, amount)`: Creates a new account with the provided details.
+  - `depositAmount(id, amount)`: Deposits funds into a specified account.
+  - `withdrawAmount(id, amount)`: Withdraws funds from a specified account
+  - `transferAmount(from, to, amount)`: Transfers funds between accounts
 
-- `getAccount`: Retrieves details of a specific account
+Each operation returns an account object with the following fields:
 
-## Mutations
-
-- `createAccount`: Creates a new account with the provided details
-- `depositAmount`: Deposits funds into a specified account
-- `withdrawAmount`: Withdraws funds from a specified account
-- `transferAmount`: Transfers funds between accounts
+```graphql
+{
+  id: ID!             # Unique identifier of the account
+  holderName: String! # Name of the account holder
+  amount: Int!        # Current balance in the account
+}
+```
